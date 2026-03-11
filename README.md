@@ -317,56 +317,58 @@ Each folder contains:
 
 This project is being built **step by step**, following an educational approach where each concept is introduced incrementally.
 
-### ✅ What's Implemented
+### What's Implemented
 
 The following core components and examples are **currently available**:
 
-**Examples & Tutorials:**
-- ✅ `00_how_rag_works` - Minimal RAG simulation to understand the concept
-- ✅ `01_intro_to_llms` - Getting started with local LLMs (node-llama-cpp basics, building LLM wrapper)
-- ✅ `02_data_loading` - Loading and preprocessing raw text data
-- ✅ `03_text_splitting_and_chunking` - Splitting long text into manageable chunks
-- ✅ `04_intro_to_embeddings` - Text similarity basics and generating embeddings
-- ✅ `05_building_vector_store` - In-memory store, nearest neighbor search, metadata filtering
-- ✅ `06_retrieval_strategies` - Basic retrieval (partial implementation)
+**Examples and tutorials:**
+- `00_how_rag_works` - Minimal RAG simulation to understand the concept
+- `01_intro_to_llms` - Getting started with local LLMs (node-llama-cpp basics, building LLM wrapper)
+- `02_data_loading` - Loading and preprocessing raw text data
+- `03_text_splitting_and_chunking` - Splitting long text into manageable chunks
+- `04_intro_to_embeddings` - Text similarity basics and generating embeddings
+- `05_building_vector_store` - In-memory store, nearest neighbor search, metadata filtering
+- `06_retrieval_strategies/01_basic_retrieval` - Basic retrieval and similarity scoring
+- `06_retrieval_strategies/02_query_preprocessing` - Query normalization and cleaning before retrieval
+- `06_retrieval_strategies/03_hybrid_search` - Combining vector and keyword (e.g. BM25) search
+- `06_retrieval_strategies/04_multi_query_retrieval` - Query decomposition (LLM), parallel retrieval, RRF and weighted fusion, deduplication
+- `06_retrieval_strategies/05_query_rewriting` - Normalization, heuristic and LLM rewrite (Qwen 3-1 via node-llama-cpp), intent classification
 
-### 🚧 What's Coming Next
+**Library:** Loaders, text splitters, embeddings, vector stores, retrievers, chains, prompts (see Project Structure).
 
-The following are **advanced topics** that will be added **step by step** in the coming **weeks and months**:
+### What's Coming Next
 
-**Advanced Retrieval Strategies:**
-- 🚧 Query preprocessing and normalization
-- 🚧 Hybrid search combining multiple strategies
-- 🚧 Multi-query retrieval
-- 🚧 Query rewriting and expansion
-- 🚧 Result ranking and scoring
-- 🚧 Post-retrieval reranking
+The following topics will be added **step by step** in the coming **weeks and months**:
 
-**Prompt Engineering for RAG:**
-- 🚧 Context stuffing techniques
-- 🚧 Citation and source attribution prompts
-- 🚧 Context compression
+**Retrieval strategies:**
+- Result ranking and scoring
+- Post-retrieval reranking
 
-**RAG in Production:**
-- 🚧 Error handling and fallbacks
-- 🚧 Streaming responses
-- 🚧 End-to-end RAG pipeline examples
+**Prompt engineering for RAG:**
+- Context stuffing techniques
+- Citation and source attribution prompts
+- Context compression
 
-**Evaluation & Optimization:**
-- 🚧 Retrieval metrics (precision, recall, MRR)
-- 🚧 Generation quality metrics
-- 🚧 End-to-end evaluation frameworks
+**RAG in production:**
+- Error handling and fallbacks
+- Streaming responses
+- End-to-end RAG pipeline examples
 
-**Advanced Features:**
-- 🚧 Observability and performance monitoring
-- 🚧 Caching strategies for repeated queries
-- 🚧 Metadata and structured data handling
-- 🚧 Graph database integration (using kuzu)
-- 🚧 Multi-modal RAG
+**Evaluation and optimization:**
+- Retrieval metrics (precision, recall, MRR)
+- Generation quality metrics
+- End-to-end evaluation frameworks
 
-**Templates & Guides:**
-- 🚧 Complete starter templates (simple RAG, API server, chatbot)
-- 🚧 Higher-level tutorials and best practices
+**Advanced features:**
+- Observability and performance monitoring
+- Caching strategies for repeated queries
+- Metadata and structured data handling
+- Graph database integration (e.g. kuzu)
+- Multi-modal RAG
+
+**Templates and guides:**
+- Complete starter templates (simple RAG, API server, chatbot)
+- Higher-level tutorials and best practices
 
 > **Note:** This is an educational project focused on building understanding from the ground up. Each new topic will be introduced with clear explanations, minimal examples, and thoroughly commented code. The goal is not to rush through features, but to ensure every concept is deeply understood before moving to the next.
 
