@@ -229,7 +229,7 @@ function expandQuery(query) {
 /**
  * Complete preprocessing pipeline
  * FIXED: Query expansion now happens BEFORE removing special characters
- * This prevents issues like "What's" → "what s" → "what s machine learning"
+ * This prevents issues like "What's" -> "what s" -> "what s machine learning"
  */
 function preprocessQuery(query, options = {}) {
     const {
@@ -365,7 +365,7 @@ async function example1(embeddingContext) {
         console.log(`  ${idx + 1}. [${chalk.green(doc.similarity.toFixed(4))}] ${doc.metadata.content.substring(0, 50) + '...'}`);
     });
 
-    console.log(`\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n${chalk.bold("Key Insight:")}`);
     console.log("Basic cleaning (lowercase, trim, normalize spaces) improves embedding consistency.");
     console.log("Similarity scores are more stable with clean input.\n");
 }
@@ -391,7 +391,7 @@ async function example2(embeddingContext) {
 
     console.log(`  Score with special chars:    ${chalk.yellow(results1_orig[0].similarity.toFixed(4))}`);
     console.log(`  Score without special chars: ${chalk.red(results1_clean[0].similarity.toFixed(4))} ${chalk.dim("(worse)")}`);
-    console.log(chalk.dim("  → Apostrophe in 'What's' provides useful context\n"));
+    console.log(chalk.dim("  Apostrophe in 'What's' provides useful context\n"));
 
     // Test Case 2: Excessive noise (helps)
     console.log(chalk.bold("Test 2: Query with Excessive Noise"));
@@ -406,7 +406,7 @@ async function example2(embeddingContext) {
 
     console.log(`  Score with special chars:    ${chalk.yellow(results2_orig[0].similarity.toFixed(4))}`);
     console.log(`  Score without special chars: ${chalk.green(results2_clean[0].similarity.toFixed(4))} ${chalk.dim("(better)")}`);
-    console.log(chalk.dim("  → Excessive symbols were pure noise\n"));
+    console.log(chalk.dim("  Excessive symbols were pure noise\n"));
 
     // Test Case 3: Structured formatting (may hurt)
     console.log(chalk.bold("Test 3: Query with Meaningful Symbols"));
@@ -421,14 +421,14 @@ async function example2(embeddingContext) {
 
     console.log(`  Score with special chars:    ${chalk.yellow(results3_orig[0].similarity.toFixed(4))}`);
     console.log(`  Score without special chars: ${results3_clean[0].similarity.toFixed(4)}`);
-    console.log(chalk.dim("  → Parentheses and 'vs' provided structure\n"));
+    console.log(chalk.dim("  Parentheses and 'vs' provided structure\n"));
 
-    console.log(`${chalk.bold("💡 Key Insight:")}`);
+    console.log(`${chalk.bold("Key Insight:")}`);
     console.log("Special character removal is NOT always beneficial:");
-    console.log("• ✓ Helps: When there's excessive noise (###, @@@, !!!)");
-    console.log("• ✗ Hurts: When punctuation adds context (contractions, structure)");
+    console.log("• Helps: When there's excessive noise (###, @@@, !!!)");
+    console.log("• Hurts: When punctuation adds context (contractions, structure)");
     console.log("• Solution: Use query expansion BEFORE removing special chars");
-    console.log("  Example: 'What's' → 'What is' → 'what is' (preserves meaning)\n");
+    console.log("  Example: 'What's' -> 'What is' -> 'what is' (preserves meaning)\n");
 }
 
 /**
@@ -460,7 +460,7 @@ async function example3(embeddingContext) {
         console.log(`  ${idx + 1}. [${doc.similarity.toFixed(4)}] ${doc.metadata.topic}`);
     });
 
-    console.log(`\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n${chalk.bold("Key Insight:")}`);
     console.log("Stopword removal can help or hurt, depending on the embedding model.");
     console.log("Modern models (like BGE) handle stopwords well - often better to keep them.");
     console.log("Test both approaches with your specific model and data.\n");
@@ -496,7 +496,7 @@ async function example4(embeddingContext) {
         console.log(`  ${idx + 1}. [${chalk.green(doc.similarity.toFixed(4))}] ${doc.metadata.topic}`);
     });
 
-    console.log(`\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n${chalk.bold("Key Insight:")}`);
     console.log("Expanding abbreviations helps match document phrasing.");
     console.log("Build a domain-specific expansion dictionary for best results.\n");
 }
@@ -553,7 +553,7 @@ async function example5(embeddingContext, chatSession) {
     console.log(`\n${chalk.bold("Generated Answer:")}`);
     console.log(chalk.yellow(answer));
 
-    console.log(`\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n${chalk.bold("Key Insight:")}`);
     console.log("Combining multiple preprocessing steps creates a robust pipeline.");
     console.log("Each step addresses a specific type of noise in user queries.");
     console.log("Order matters: expand abbreviations before removing special characters!\n");
@@ -583,7 +583,7 @@ async function example6(embeddingContext) {
         });
         const embedding = await embeddingContext.getEmbeddingFor(cleaned);
         embeddings.push(embedding.vector);
-        console.log(`"${query}" → "${cleaned}"`);
+        console.log(`"${query}" -> "${cleaned}"`);
     }
 
     // Calculate cosine similarity between embeddings
@@ -612,7 +612,7 @@ async function example6(embeddingContext) {
         console.log(row);
     }
 
-    console.log(`\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n${chalk.bold("Key Insight:")}`);
     console.log("Query preprocessing ensures consistent embeddings for semantically identical queries.");
     console.log("This leads to more stable and predictable retrieval results.\n");
 }
@@ -652,7 +652,7 @@ async function example7(embeddingContext) {
         });
     }
 
-    console.log(`\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n${chalk.bold("Key Insight:")}`);
     console.log("Real user queries are messy - preprocessing handles variations gracefully.");
     console.log("Build your preprocessing pipeline based on actual user query patterns.\n");
 }
@@ -692,7 +692,7 @@ async function runAllExamples() {
         await OutputHelper.runExample("Example 6: Embedding Vector Stability", () => example6(embeddingContext));
         await OutputHelper.runExample("Example 7: Real-World Query Preprocessing", () => example7(embeddingContext));
 
-        console.log(chalk.bold.green("\n✅ All examples completed successfully!\n"));
+        console.log(chalk.bold.green("\nAll examples completed successfully!\n"));
 
         console.log(chalk.bold("Key Takeaways:"));
         console.log("• Query preprocessing improves embedding consistency and stability");
@@ -703,12 +703,12 @@ async function runAllExamples() {
         console.log("• Build preprocessing based on actual user query patterns\n");
 
         console.log(chalk.bold("Best Practices:"));
-        console.log("✓ Always lowercase and trim user input");
-        console.log("✓ Normalize whitespace (multiple spaces → single space)");
-        console.log("✓ Expand abbreviations BEFORE removing special characters");
-        console.log("✓ Remove special characters for cleaner embeddings");
-        console.log("✓ Test stopword removal - not always beneficial");
-        console.log("✓ Monitor embedding stability across query variations\n");
+        console.log("- Always lowercase and trim user input");
+        console.log("- Normalize whitespace (multiple spaces to single space)");
+        console.log("- Expand abbreviations BEFORE removing special characters");
+        console.log("- Remove special characters for cleaner embeddings");
+        console.log("- Test stopword removal - not always beneficial");
+        console.log("- Monitor embedding stability across query variations\n");
 
         console.log(chalk.bold("Recommended Pipeline (Fixed Order):"));
         console.log("1. Lowercase + trim");
@@ -722,7 +722,7 @@ async function runAllExamples() {
         console.log("• Advanced: Query rewriting, spell checking, semantic expansion\n");
 
     } catch (error) {
-        console.error(chalk.red("\n❌ Error:"), error?.message ?? error);
+        console.error(chalk.red("\nError:"), error?.message ?? error);
         console.error(chalk.dim("\nMake sure you have:"));
         console.error(chalk.dim("1. Installed dependencies: npm install"));
         console.error(chalk.dim("2. Both model files in correct location:"));

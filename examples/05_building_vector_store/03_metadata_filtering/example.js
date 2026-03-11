@@ -266,7 +266,7 @@ async function example1() {
     });
     console.log();
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("Metadata filtering narrows results to specific categories while maintaining semantic relevance.\n");
 }
 
@@ -325,7 +325,7 @@ async function example2() {
     });
     console.log();
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("Combine multiple metadata fields for precise filtering. More filters = fewer results.\n");
 }
 
@@ -380,7 +380,7 @@ async function example3() {
     });
     console.log();
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("Range filters work with numerical metadata (ratings, dates, counts) for time-based or quality filtering.\n");
 }
 
@@ -443,7 +443,7 @@ async function example4() {
     });
     console.log();
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("Tags enable flexible categorization. Use includes() for OR logic, combine for AND logic.\n");
 }
 
@@ -492,7 +492,7 @@ async function example5() {
     });
     console.log();
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("Over-fetch by 2-3x when filtering to ensure you get enough results.");
     console.log("The extra search time is minimal compared to embedding time.\n");
 }
@@ -576,7 +576,7 @@ async function example6() {
     });
     console.log();
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("Build reusable filter functions to compose complex queries dynamically.\n");
 }
 
@@ -657,11 +657,11 @@ async function example7() {
     console.log();
 
     console.log(chalk.bold("Best Practices:"));
-    console.log("✓ Use exclude filters to remove unwanted results");
-    console.log("✓ Combine OR conditions for broader matches");
-    console.log("✓ Sort filtered results by metadata fields");
-    console.log("✓ Combine similarity thresholds with metadata filters");
-    console.log("✓ Keep filter logic readable and maintainable\n");
+    console.log("- Use exclude filters to remove unwanted results");
+    console.log("- Combine OR conditions for broader matches");
+    console.log("- Sort filtered results by metadata fields");
+    console.log("- Combine similarity thresholds with metadata filters");
+    console.log("- Keep filter logic readable and maintainable\n");
 }
 
 // ============================================================================
@@ -688,7 +688,7 @@ async function runAllExamples() {
         await OutputHelper.runExample("Example 6: Dynamic Filter Composition", example6);
         await OutputHelper.runExample("Example 7: Complex Filtering Patterns", example7);
 
-        console.log(chalk.bold.green("\n✅ All examples completed successfully!\n"));
+        console.log(chalk.bold.green("\nAll examples completed successfully!\n"));
         console.log(chalk.bold("Key Takeaways:"));
         console.log("• Metadata filtering narrows semantic search results");
         console.log("• Combine multiple fields for precise filtering");
@@ -699,18 +699,18 @@ async function runAllExamples() {
         console.log("• Combine similarity thresholds with metadata filters\n");
 
         console.log(chalk.bold("Filter Strategy Guidelines:"));
-        console.log("✓ Single field: Direct equality check");
-        console.log("✓ Multiple fields: AND conditions for precision");
-        console.log("✓ Ranges: Use for dates, ratings, counts");
-        console.log("✓ Tags: Use includes() for flexible categorization");
-        console.log("✓ Complex: Compose OR/AND conditions as needed\n");
+        console.log("- Single field: Direct equality check");
+        console.log("- Multiple fields: AND conditions for precision");
+        console.log("- Ranges: Use for dates, ratings, counts");
+        console.log("- Tags: Use includes() for flexible categorization");
+        console.log("- Complex: Compose OR/AND conditions as needed\n");
 
         console.log(chalk.bold("Performance Tips:"));
-        console.log("→ Over-fetch before filtering (2-3x target k)");
-        console.log("→ Put most selective filters first");
-        console.log("→ Cache common filter functions");
-        console.log("→ Monitor filter selectivity ratios");
-        console.log("→ Consider server-side filtering for very large datasets\n");
+        console.log("- Over-fetch before filtering (2-3x target k)");
+        console.log("- Put most selective filters first");
+        console.log("- Cache common filter functions");
+        console.log("- Monitor filter selectivity ratios");
+        console.log("- Consider server-side filtering for very large datasets\n");
 
         console.log(chalk.bold("Common Use Cases:"));
         console.log("• Filter by category/type (documents, products, users)");
@@ -724,7 +724,7 @@ async function runAllExamples() {
         console.log("• Scale to larger datasets with distributed vector DBs\n");
 
     } catch (error) {
-        console.error(chalk.red("\n❌ Error:"), error?.message ?? error);
+        console.error(chalk.red("\nError:"), error?.message ?? error);
         console.error(chalk.dim("\nMake sure you have:"));
         console.error(chalk.dim("1. Completed previous examples"));
         console.error(chalk.dim("2. Installed dependencies: npm install"));

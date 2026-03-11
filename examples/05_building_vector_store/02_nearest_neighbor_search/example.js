@@ -237,7 +237,7 @@ async function example1() {
         console.log();
     }
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("k controls how many neighbors to return. Larger k gives more results but may include less relevant matches.\n");
 }
 
@@ -334,10 +334,10 @@ async function example3() {
     for (const k of kValues) {
         const { results, embedTime, searchTime } = await searchWithTiming(vectorStore, context, query, k);
         
-        console.log(`k=${k.toString().padEnd(3)} → Embed: ${embedTime}ms, Search: ${searchTime}ms, Total: ${embedTime + searchTime}ms (${results.length} results)`);
+        console.log(`k=${k.toString().padEnd(3)} - Embed: ${embedTime}ms, Search: ${searchTime}ms, Total: ${embedTime + searchTime}ms (${results.length} results)`);
     }
 
-    console.log(`\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n${chalk.bold("Key Insight:")}`);
     console.log("Embedding time dominates. kNN search is very fast, even for large k.\n");
 }
 
@@ -485,7 +485,7 @@ async function example5() {
     }
     console.log();
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("- Texts 1 & 2 (both about programming) have high similarity / low distance");
     console.log("- Text 3 (cooking) is very different from 1 & 2");
     console.log("- embedded-vector-db uses cosine similarity by default\n");
@@ -535,7 +535,7 @@ async function example6() {
         console.log();
     }
 
-    console.log(chalk.bold("💡 Recommendations:"));
+    console.log(chalk.bold("Recommendations:"));
     console.log("• Use k=3-5 for fast, focused results");
     console.log("• Use k=10-20 for comprehensive results with re-ranking");
     console.log("• Consider threshold-based filtering (e.g., similarity > 0.5)");
@@ -573,7 +573,7 @@ async function example7() {
     }
     const cacheTime = Date.now() - startCache;
 
-    console.log(`${chalk.green("✓")} 3 searches completed: ${cacheTime}ms\n`);
+    console.log(`${chalk.green("OK")} 3 searches completed: ${cacheTime}ms\n`);
 
     // Technique 2: Adjust k for filtering
     console.log(chalk.bold("2. Over-fetching for Filtering"));
@@ -587,7 +587,7 @@ async function example7() {
     const filtered = manyResults.filter(r => r.metadata.category === "programming").slice(0, 3);
     const filterTime = Date.now() - startFilter;
 
-    console.log(`${chalk.green("✓")} Found ${filtered.length} programming documents: ${filterTime}ms\n`);
+    console.log(`${chalk.green("OK")} Found ${filtered.length} programming documents: ${filterTime}ms\n`);
 
     // Technique 3: Batch processing
     console.log(chalk.bold("3. Batch Query Processing"));
@@ -606,13 +606,13 @@ async function example7() {
     
     const batchTime = Date.now() - startBatch;
 
-    console.log(`${chalk.green("✓")} ${queries.length} queries processed: ${batchTime}ms\n`);
+    console.log(`${chalk.green("OK")} ${queries.length} queries processed: ${batchTime}ms\n`);
 
     console.log(chalk.bold("Optimization Summary:"));
-    console.log("✓ Cache embeddings when searching with same query multiple times");
-    console.log("✓ Over-fetch and filter when you need specific metadata criteria");
-    console.log("✓ Use Promise.all() for parallel batch processing");
-    console.log("✓ The embedding step is the bottleneck, not the kNN search\n");
+    console.log("- Cache embeddings when searching with same query multiple times");
+    console.log("- Over-fetch and filter when you need specific metadata criteria");
+    console.log("- Use Promise.all() for parallel batch processing");
+    console.log("- The embedding step is the bottleneck, not the kNN search\n");
 }
 
 // ============================================================================
@@ -639,7 +639,7 @@ async function runAllExamples() {
         await OutputHelper.runExample("Example 6: Search Quality vs Performance", example6);
         await OutputHelper.runExample("Example 7: Optimizing Search Performance", example7);
 
-        console.log(chalk.bold.green("\n✅ All examples completed successfully!\n"));
+        console.log(chalk.bold.green("\nAll examples completed successfully!\n"));
         console.log(chalk.bold("Key Takeaways:"));
         console.log("• k-Nearest Neighbors finds the k most similar vectors");
         console.log("• HNSW provides fast approximate search (vs slow exact search)");
@@ -649,22 +649,22 @@ async function runAllExamples() {
         console.log("• Cache embeddings and use batch operations for best performance\n");
 
         console.log(chalk.bold("Algorithm Choice Guidelines:"));
-        console.log("✓ HNSW (approximate): Production use, large datasets, speed matters");
-        console.log("✓ Brute force (exact): Small datasets, maximum precision needed");
-        console.log("✓ Hybrid: Approximate for candidates, exact for re-ranking\n");
+        console.log("- HNSW (approximate): Production use, large datasets, speed matters");
+        console.log("- Brute force (exact): Small datasets, maximum precision needed");
+        console.log("- Hybrid: Approximate for candidates, exact for re-ranking\n");
 
         console.log(chalk.bold("Performance Optimization:"));
-        console.log("→ Cache query embeddings when reusing");
-        console.log("→ Use batch operations with Promise.all()");
-        console.log("→ Over-fetch and filter for metadata criteria");
-        console.log("→ Monitor embedding time vs search time separately\n");
+        console.log("- Cache query embeddings when reusing");
+        console.log("- Use batch operations with Promise.all()");
+        console.log("- Over-fetch and filter for metadata criteria");
+        console.log("- Monitor embedding time vs search time separately\n");
 
         console.log(chalk.bold("Next Steps:"));
         console.log("• 03_metadata_filtering: Advanced filtering strategies");
         console.log("• Production deployment with persistent storage\n");
 
     } catch (error) {
-        console.error(chalk.red("\n❌ Error:"), error?.message ?? error);
+        console.error(chalk.red("\nError:"), error?.message ?? error);
         console.error(chalk.dim("\nMake sure you have:"));
         console.error(chalk.dim("1. Completed 01_in_memory_store"));
         console.error(chalk.dim("2. Installed dependencies: npm install"));

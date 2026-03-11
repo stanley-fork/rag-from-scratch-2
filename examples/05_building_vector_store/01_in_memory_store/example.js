@@ -177,7 +177,7 @@ async function example1() {
         maxElements: MAX_ELEMENTS,
     });
 
-    console.log(`${chalk.green("✓")} Vector store created (${DIM} dimensions)\n`);
+    console.log(`${chalk.green("OK")} Vector store created (${DIM} dimensions)\n`);
 
     const context = await OutputHelper.withSpinner(
         "Loading embedding model...",
@@ -194,7 +194,7 @@ async function example1() {
         () => addDocumentsToStore(vectorStore, context, documents)
     );
 
-    console.log(`${chalk.green("✓")} Added ${documents.length} documents to vector store\n`);
+    console.log(`${chalk.green("OK")} Added ${documents.length} documents to vector store\n`);
 
     OutputHelper.formatStats?.({
         "Namespace": NS,
@@ -240,7 +240,7 @@ async function example2() {
         });
     }
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("The vector store finds semantically similar documents based on meaning, not just keywords.\n");
 }
 
@@ -278,7 +278,7 @@ async function example3() {
         console.log(`${i + 1}. [${r.similarity.toFixed(4)}] ${r.metadata.category}: ${r.metadata.content.substring(0, 50)}...`);
     });
 
-    console.log(`\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n${chalk.bold("Key Insight:")}`);
     console.log("Metadata lets you narrow results by category, difficulty, or any custom fields.\n");
 }
 
@@ -311,7 +311,7 @@ async function example4() {
     const addStart = Date.now();
     await addDocumentsToStore(vectorStore, context, largeDataset);
     const addTime = Date.now() - addStart;
-    console.log(`${chalk.green("✓")} Added in ${addTime}ms\n`);
+    console.log(`${chalk.green("OK")} Added in ${addTime}ms\n`);
 
     const query = "machine learning and AI";
     console.log(`${chalk.bold("Query:")} ${chalk.cyan(query)}\n`);
@@ -326,7 +326,7 @@ async function example4() {
         const results = await searchVectorStore(vectorStore, context, query, k);
         const searchTime = Date.now() - searchStart;
 
-        console.log(`k=${k.toString().padEnd(3)} → ${searchTime}ms (returned ${results.length} results)`);
+        console.log(`k=${k.toString().padEnd(3)} - ${searchTime}ms (returned ${results.length} results)`);
     }
 
     console.log(`\n${chalk.bold("Statistics:")}`);
@@ -369,7 +369,7 @@ async function example5() {
         }
     }
 
-    console.log(chalk.bold("💡 Use Case:"));
+    console.log(chalk.bold("Use Case:"));
     console.log("After similarity search returns IDs, fetch full documents and metadata for display.\n");
 }
 
@@ -393,7 +393,7 @@ async function example6() {
     await vectorStore.delete(NS, "doc_2");
     idTracker.delete("doc_2");
     documentCache.delete("doc_2");
-    console.log(`${chalk.green("✓")} Deleted`);
+    console.log(`${chalk.green("OK")} Deleted`);
     console.log(`IDs (tracked): ${idTracker.count()}\n`);
 
     // Add a new document
@@ -414,7 +414,7 @@ async function example6() {
         idTracker.add(newDoc.metadata.id);
         documentCache.set(newDoc.metadata.id, { id: newDoc.metadata.id, metadata });
     }
-    console.log(`${chalk.green("✓")} Added`);
+    console.log(`${chalk.green("OK")} Added`);
     console.log(`IDs (tracked): ${idTracker.count()}\n`);
 
     // Update an existing document using update()
@@ -439,14 +439,14 @@ async function example6() {
         await vectorStore.update(NS, updatedDoc.metadata.id, Array.from(updatedEmbedding.vector), metadata);
         documentCache.set(updatedDoc.metadata.id, { id: updatedDoc.metadata.id, metadata });
     }
-    console.log(`${chalk.green("✓")} Updated`);
+    console.log(`${chalk.green("OK")} Updated`);
 
     // Verify changes
     const doc1 = documentCache.get("doc_1");
     console.log(`${chalk.bold("Updated document content:")}`);
     console.log(`${doc1.metadata.content}\n`);
 
-    console.log(chalk.bold("💡 CRUD Operations:"));
+    console.log(chalk.bold("CRUD Operations:"));
     console.log("Create (insert), Read (get/search), Update (update), Delete (delete)\n");
 }
 
@@ -521,7 +521,7 @@ async function runAllExamples() {
         await OutputHelper.runExample("Example 6: Updating and Deleting Documents", example6);
         await OutputHelper.runExample("Example 7: Understanding Similarity Scores", example7);
 
-        console.log(chalk.bold.green("\n✅ All examples completed successfully!\n"));
+        console.log(chalk.bold.green("\nAll examples completed successfully!\n"));
         console.log(chalk.bold("Key Takeaways:"));
         console.log("• In-memory vector stores are fast and easy to use");
         console.log("• Similarity search finds semantically similar documents");
@@ -530,23 +530,23 @@ async function runAllExamples() {
         console.log("• Similarity scores indicate relevance (0–1 range)\n");
 
         console.log(chalk.bold("When to Use In-Memory Vector Stores:"));
-        console.log("✓ Development and prototyping");
-        console.log("✓ Small datasets (< 10,000 documents)");
-        console.log("✓ Fast iteration and testing");
-        console.log("✓ No persistence needed between runs\n");
+        console.log("- Development and prototyping");
+        console.log("- Small datasets (< 10,000 documents)");
+        console.log("- Fast iteration and testing");
+        console.log("- No persistence needed between runs\n");
 
         console.log(chalk.bold("When to Use Persistent Vector Stores:"));
-        console.log("→ Production applications");
-        console.log("→ Large datasets (> 10,000 documents)");
-        console.log("→ Need data persistence");
-        console.log("→ Multiple concurrent users\n");
+        console.log("- Production applications");
+        console.log("- Large datasets (> 10,000 documents)");
+        console.log("- Need data persistence");
+        console.log("- Multiple concurrent users\n");
 
         console.log(chalk.bold("Next Steps:"));
         console.log("• 02_nearest_neighbor_search: Advanced search algorithms");
         console.log("• 03_metadata_filtering: Complex filtering strategies");
 
     } catch (error) {
-        console.error(chalk.red("\n❌ Error:"), error?.message ?? error);
+        console.error(chalk.red("\nError:"), error?.message ?? error);
         console.error(chalk.dim("\nMake sure you have:"));
         console.error(chalk.dim("1. Installed embedded-vector-db: npm install embedded-vector-db"));
         console.error(chalk.dim("2. Completed previous examples"));

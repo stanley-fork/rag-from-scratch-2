@@ -120,7 +120,7 @@ async function example1() {
         console.log(`   "${chalk.dim(result.document.pageContent)}"\n`);
     });
 
-    console.log(chalk.bold('💡 Key Insight:'));
+    console.log(chalk.bold('Key Insight:'));
     console.log('Notice how the top result is about Mount Everest, even though');
     console.log('the query and document use different words!');
     console.log('Embeddings capture MEANING, not just keyword matches.\n');
@@ -156,7 +156,7 @@ async function example2() {
         console.log(`"${chalk.dim(topResult.document.pageContent)}"`);
     }
 
-    console.log(`\n${chalk.bold('💡 Efficiency:')}`);
+    console.log(`\n${chalk.bold('Efficiency:')}`);
     console.log('Documents are embedded ONCE, then reused for multiple queries.');
     console.log('This is the foundation of fast semantic search!\n');
 }
@@ -184,7 +184,7 @@ async function example3() {
     console.log(`\n${chalk.bold('Sample Vector Values (first 10):')}`);
     console.log(`[${embedding.vector.slice(0, 10).map(v => v.toFixed(4)).join(', ')}...]\n`);
 
-    console.log(chalk.bold('💡 How It Works:'));
+    console.log(chalk.bold('How It Works:'));
     console.log('• Each document becomes a vector in high-dimensional space');
     console.log('• Similar documents have similar vectors');
     console.log('• We use cosine similarity to measure "closeness"');
@@ -282,7 +282,7 @@ async function example5() {
         }
     }
 
-    console.log(`\n${chalk.bold('💡 Takeaway:')}`);
+    console.log(`\n${chalk.bold('Takeaway:')}`);
     console.log('Both keyword-heavy and natural language queries work well!');
     console.log('Embeddings understand meaning regardless of phrasing.\n');
 }
@@ -309,9 +309,9 @@ async function runAllExamples() {
         await OutputHelper.runExample('Example 4: Similarity Score Distribution', example4);
         await OutputHelper.runExample('Example 5: Comparing Different Queries', example5);
 
-        console.log(chalk.bold.green('\n ✅ All examples completed successfully!\n'));
+        console.log(chalk.bold.green('\nAll examples completed successfully!\n'));
     } catch (error) {
-        console.error(chalk.red('\n❌ Error:'), error.message);
+        console.error(chalk.red('\nError:'), error.message);
         console.error(chalk.dim('\nMake sure you have:'));
         console.error(chalk.dim('1. Installed node-llama-cpp: npm install node-llama-cpp'));
         console.error(chalk.dim('2. Downloaded bge-small-en-v1.5-q8_0.gguf model into the models folder'));

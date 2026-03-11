@@ -51,7 +51,7 @@ function ragPipeline(query) {
     
     // Generate answer using retrieved context
     const answer = generateAnswer(query, relevantDocs);
-    console.log(`\n💡 Answer:\n${answer}\n`);
+    console.log(`\nAnswer:\n${answer}\n`);
     
     return answer;
 }

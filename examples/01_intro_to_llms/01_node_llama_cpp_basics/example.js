@@ -14,7 +14,7 @@ console.log('🦙 node-llama-cpp Basics\n');
 // STEP 1: Get the Llama instance
 console.log('Step 1: Getting Llama instance...');
 const llama = await getLlama();
-console.log('✓ Llama instance ready\n');
+console.log('Llama instance ready\n');
 
 // STEP 2: Load a model
 console.log('Step 2: Loading model...');
@@ -25,7 +25,7 @@ const model = await llama.loadModel({
     modelPath,
     // gpuLayers: 35, // Uncomment to use GPU acceleration
 });
-console.log('✓ Model loaded\n');
+console.log('Model loaded\n');
 
 // STEP 3: Create a context
 console.log('Step 3: Creating context...');
@@ -34,14 +34,14 @@ const context = await model.createContext({
     batchSize: 512,     // Batch size for processing
     threads: 4,         // CPU threads to use
 });
-console.log('✓ Context created\n');
+console.log('Context created\n');
 
 // STEP 4: Create a chat session
 console.log('Step 4: Creating chat session...');
 const session = new LlamaChatSession({
     contextSequence: context.getSequence()
 });
-console.log('✓ Chat session ready\n');
+console.log('Chat session ready\n');
 
 // STEP 5: Generate a response
 console.log('Step 5: Generating response...');
@@ -55,7 +55,7 @@ const response = await session.prompt(
 );
 
 console.log('Response:', response);
-console.log('\n✓ Generation complete\n');
+console.log('\nGeneration complete\n');
 
 // STEP 6: Streaming example
 console.log('Step 6: Streaming example...');
@@ -76,9 +76,9 @@ await session.prompt(
 );
 
 console.log('\n\nFull response:\n', tokens.join(''));
-console.log('\n✓ Streaming complete\n');
+console.log('\nStreaming complete\n');
 
 // STEP 7: Cleanup
 console.log('Step 7: Cleaning up resources...');
 await context.dispose();
-console.log('✓ Resources cleaned up\n');
+console.log('Resources cleaned up\n');

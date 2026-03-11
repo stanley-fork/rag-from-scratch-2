@@ -143,6 +143,20 @@ At the end you can look into [Showcase](examples/06_retrieval_strategies/01_basi
 
 ---
 
+### 9. **Multi-Query Retrieval**
+`examples/06_retrieval_strategies/04_multi_query_retrieval/`  
+[Code](examples/06_retrieval_strategies/04_multi_query_retrieval/example.js) | [Code Explanation](examples/06_retrieval_strategies/04_multi_query_retrieval/CODE.md) | [Concepts](examples/06_retrieval_strategies/04_multi_query_retrieval/CONCEPT.md)
+
+**What you'll learn:**
+- Decomposing complex queries into sub-queries (e.g. with an LLM)
+- Running multiple queries in parallel and fusing results (RRF, weighted)
+- Query expansion, perspective-based retrieval, and adaptive strategy selection
+- Deduplication and ranking when combining result lists
+
+**Key concepts:** query decomposition, parallel retrieval, reciprocal rank fusion (RRF), weighted fusion, deduplication
+
+---
+
 ## Project Structure
 
 ```

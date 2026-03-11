@@ -53,10 +53,10 @@ async function initializeEmbeddingModel() {
         });
         const context = await model.createEmbeddingContext();
 
-        console.log(chalk.green('✓ Embedding model initialized'));
+        console.log(chalk.green('Embedding model initialized'));
         return context;
     } catch (error) {
-        console.error(chalk.red('✗ Failed to initialize embedding model:'), error);
+        console.error(chalk.red('Failed to initialize embedding model:'), error);
         throw error;
     }
 }
@@ -76,10 +76,10 @@ async function loadDocuments() {
         const pdfLoader = new PDFLoader(CONFIG.documentPath, { splitPages: true });
         const documents = await pdfLoader.load();
 
-        console.log(chalk.green(`✓ Loaded ${documents.length} pages`));
+        console.log(chalk.green(`Loaded ${documents.length} pages`));
         return documents;
     } catch (error) {
-        console.error(chalk.red('✗ Failed to load documents:'), error);
+        console.error(chalk.red('Failed to load documents:'), error);
         throw error;
     }
 }
@@ -121,7 +121,7 @@ function splitDocuments(documents) {
         }
     }
 
-    console.log(chalk.green(`✓ Created ${allChunks.length} chunks`));
+    console.log(chalk.green(`Created ${allChunks.length} chunks`));
     return allChunks;
 }
 
@@ -160,7 +160,7 @@ async function generateEmbeddings(embeddingContext, documents) {
         }
     }
 
-    console.log(chalk.green(`\n✓ Generated ${embeddings.length} embeddings`));
+    console.log(chalk.green(`\nGenerated ${embeddings.length} embeddings`));
     return embeddings;
 }
 
@@ -207,7 +207,7 @@ async function createVectorStore(embeddingContext, documents) {
         }
     }
 
-    console.log(chalk.green(`\n✓ Added ${documents.length} documents to vector store`));
+    console.log(chalk.green(`\nAdded ${documents.length} documents to vector store`));
     return vectorStore;
 }
 
@@ -266,10 +266,10 @@ async function initializeLLM() {
         const context = await model.createContext();
         const session = new LlamaChatSession({ contextSequence: context.getSequence() });
 
-        console.log(chalk.green('✓ LLM initialized'));
+        console.log(chalk.green('LLM initialized'));
         return session;
     } catch (error) {
-        console.error(chalk.red('✗ Failed to initialize LLM:'), error);
+        console.error(chalk.red('Failed to initialize LLM:'), error);
         throw error;
     }
 }
@@ -354,15 +354,15 @@ async function main() {
         const answerWithoutContext = await chatSession.prompt(question);
 
         console.log(chalk.bold.blue('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'));
-        console.log(chalk.bold.red('⚠️  Answer WITHOUT Context (Baseline):'));
+        console.log(chalk.bold.red('Answer WITHOUT Context (Baseline):'));
         console.log(chalk.bold.blue('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'));
         console.log(chalk.yellow(answerWithoutContext.trim()));
 
-        console.log(chalk.bold.green('\n✅ RAG pipeline completed successfully!'));
-        console.log(chalk.dim('\n💡 The difference shows how retrieval improves answer quality.\n'));
+        console.log(chalk.bold.green('\nRAG pipeline completed successfully!'));
+        console.log(chalk.dim('\nThe difference shows how retrieval improves answer quality.\n'));
 
     } catch (error) {
-        console.error(chalk.bold.red('\n❌ Error in RAG pipeline:'), error);
+        console.error(chalk.bold.red('\nError in RAG pipeline:'), error);
         process.exit(1);
     }
 

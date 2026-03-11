@@ -248,7 +248,7 @@ async function example1() {
     console.log(chalk.yellow(answer));
     console.log();
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("RAG = Retrieval (vector search) + Augmented Generation (LLM with context)\n");
 }
 
@@ -295,7 +295,7 @@ async function example2() {
         console.log(chalk.dim(displayAnswer));
     }
 
-    console.log(`\n\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n\n${chalk.bold("Key Insight:")}`);
     console.log("k=1: Fast but limited context");
     console.log("k=3: Balanced (most common choice)");
     console.log("k=5: More context but may include less relevant docs\n");
@@ -349,9 +349,9 @@ async function example3() {
         console.log();
     }
 
-    console.log(chalk.bold("💡 Key Insight:"));
-    console.log("High similarity scores (>0.7) → Relevant context → Accurate answers");
-    console.log("Low similarity scores (<0.3) → Poor context → LLM should acknowledge limitations\n");
+    console.log(chalk.bold("Key Insight:"));
+    console.log("High similarity scores (>0.7) - Relevant context - Accurate answers");
+    console.log("Low similarity scores (<0.3) - Poor context - LLM should acknowledge limitations\n");
 }
 
 /**
@@ -401,7 +401,7 @@ async function example4() {
     console.log(chalk.yellow(answer));
     console.log();
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("RAG grounds answers in your knowledge base, ensuring accuracy and reducing hallucinations.\n");
 }
 
@@ -451,7 +451,7 @@ async function example5() {
     console.log(chalk.yellow(answer));
     console.log();
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("Set a similarity threshold (e.g., 0.3-0.5) to filter out irrelevant documents.");
     console.log("This prevents noise from degrading answer quality.\n");
 }
@@ -489,7 +489,7 @@ async function example6() {
         console.log(`${chalk.bold(`k=${k}:`)} ${context.length} chars (~${tokens} tokens)`);
     }
 
-    console.log(`\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n${chalk.bold("Key Insight:")}`);
     console.log("Balance context size with LLM limits:");
     console.log("• Small models (1B-3B): k=2-3 documents");
     console.log("• Medium models (7B-13B): k=3-5 documents");
@@ -542,7 +542,7 @@ async function example7() {
     const totalTime = Date.now() - startTime;
     console.log(`${chalk.bold("Total time:")} ${totalTime}ms (avg: ${Math.round(totalTime / queries.length)}ms per query)\n`);
 
-    console.log(chalk.bold("💡 Key Insight:"));
+    console.log(chalk.bold("Key Insight:"));
     console.log("For batch processing, consider caching embeddings and parallelizing retrieval steps.\n");
 }
 
@@ -570,7 +570,7 @@ async function runAllExamples() {
         await OutputHelper.runExample("Example 6: Context Window Management", example6);
         await OutputHelper.runExample("Example 7: Batch Processing", example7);
 
-        console.log(chalk.bold.green("\n✅ All examples completed successfully!\n"));
+        console.log(chalk.bold.green("\nAll examples completed successfully!\n"));
         
         console.log(chalk.bold("Key Takeaways:"));
         console.log("• RAG = Retrieval (vector search) + Augmented Generation (LLM)");
@@ -581,18 +581,18 @@ async function runAllExamples() {
         console.log("• RAG grounds answers in your knowledge base\n");
 
         console.log(chalk.bold("Best Practices:"));
-        console.log("✓ Use k=3 as default starting point");
-        console.log("✓ Set similarity threshold (0.3-0.5) to filter noise");
-        console.log("✓ Monitor context size relative to model limits");
-        console.log("✓ Handle cases with no relevant documents gracefully");
-        console.log("✓ Compare with/without RAG to verify improvement\n");
+        console.log("- Use k=3 as default starting point");
+        console.log("- Set similarity threshold (0.3-0.5) to filter noise");
+        console.log("- Monitor context size relative to model limits");
+        console.log("- Handle cases with no relevant documents gracefully");
+        console.log("- Compare with/without RAG to verify improvement\n");
 
         console.log(chalk.bold("Next Steps:"));
         console.log("• 02_advanced_retrieval: Query expansion, re-ranking, hybrid search");
         console.log("• 03_retrieval_optimization: Caching, batching, performance tuning\n");
 
     } catch (error) {
-        console.error(chalk.red("\n❌ Error:"), error?.message ?? error);
+        console.error(chalk.red("\nError:"), error?.message ?? error);
         console.error(chalk.dim("\nMake sure you have:"));
         console.error(chalk.dim("1. Installed dependencies: npm install"));
         console.error(chalk.dim("2. Both model files in correct location"));

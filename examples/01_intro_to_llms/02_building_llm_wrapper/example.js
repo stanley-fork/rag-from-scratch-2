@@ -10,7 +10,7 @@
 
 import {LlamaCpp} from "../../../src/llms/index.js";
 
-console.log('🏗️  Building an LLM Wrapper Class\n');
+console.log('Building an LLM Wrapper Class\n');
 
 console.log(`
 WHY BUILD A WRAPPER?
@@ -107,12 +107,12 @@ console.log(`
 ║                    WRAPPER BENEFITS                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
-✓ Clean, simple API
-✓ Easy to understand and use
-✓ Consistent with other frameworks
-✓ Handles resource management
-✓ Supports streaming and batching
-✓ Configurable but with good defaults
+- Clean, simple API
+- Easy to understand and use
+- Consistent with other frameworks
+- Handles resource management
+- Supports streaming and batching
+- Configurable but with good defaults
 
 WHAT WE BUILT:
 ──────────────
@@ -133,10 +133,10 @@ WHAT WE BUILT:
    - Clean separation of concerns
 
 NEXT IN RAG PIPELINE:
-→ Data loading (how to get documents)
-→ Text splitting (chunking for embeddings)
-→ Embeddings (convert text to vectors)
-→ Vector stores (store and search embeddings)
-→ Retrieval strategies (find relevant docs)
-→ Putting it all together (complete RAG system)
+- Data loading (how to get documents)
+- Text splitting (chunking for embeddings)
+- Embeddings (convert text to vectors)
+- Vector stores (store and search embeddings)
+- Retrieval strategies (find relevant docs)
+- Putting it all together (complete RAG system)
 `);

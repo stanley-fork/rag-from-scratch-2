@@ -228,7 +228,7 @@ async function example1() {
     );
 
     const duration = ((Date.now() - startTime) / 1000).toFixed(2);
-    console.log(`\n${chalk.green('✓')} Completed in ${duration}s`);
+    console.log(`\n${chalk.green('OK')} Completed in ${duration}s`);
 
     const avgTime = (duration / documents.length * 1000).toFixed(2);
     OutputHelper.formatStats({
@@ -262,8 +262,8 @@ async function example2() {
     const jsonResult = await saveEmbeddingsJSON(embeddings, 'embeddings.json');
     const saveTime = Date.now() - saveStart;
 
-    console.log(`${chalk.green('✓')} Generated ${embeddings.length} embeddings in ${(generateTime / 1000).toFixed(2)}s`);
-    console.log(`${chalk.green('✓')} Saved to ${jsonResult.filepath}`);
+    console.log(`${chalk.green('OK')} Generated ${embeddings.length} embeddings in ${(generateTime / 1000).toFixed(2)}s`);
+    console.log(`${chalk.green('OK')} Saved to ${jsonResult.filepath}`);
     console.log(`${chalk.dim('  File size:')} ${(jsonResult.size / 1024 / 1024).toFixed(2)} MB`);
 
     // Load from disk
@@ -272,7 +272,7 @@ async function example2() {
     const loadedEmbeddings = await loadEmbeddingsJSON('embeddings.json');
     const loadTime = Date.now() - loadStart;
 
-    console.log(`${chalk.green('✓')} Loaded ${loadedEmbeddings.length} embeddings in ${loadTime}ms`);
+    console.log(`${chalk.green('OK')} Loaded ${loadedEmbeddings.length} embeddings in ${loadTime}ms`);
 
     // Performance comparison
     console.log(`\n${chalk.bold('Performance Comparison:')}`);
@@ -283,7 +283,7 @@ async function example2() {
         'Speedup': `${(generateTime / loadTime).toFixed(0)}x faster`
     });
 
-    console.log(`\n${chalk.bold('💡 Key Insight:')}`);
+    console.log(`\n${chalk.bold('Key Insight:')}`);
     console.log('Loading pre-computed embeddings is dramatically faster!');
     console.log('Always save embeddings after generating them.\n');
 }
@@ -303,7 +303,7 @@ async function example3() {
     const initialDocs = createSampleDocuments(30);
     const initialEmbeddings = await generateEmbeddings(context, initialDocs);
     await saveEmbeddingsJSON(initialEmbeddings, 'incremental.json');
-    console.log(`${chalk.green('✓')} Generated and saved ${initialEmbeddings.length} embeddings`);
+    console.log(`${chalk.green('OK')} Generated and saved ${initialEmbeddings.length} embeddings`);
 
     // Simulate adding new documents
     console.log(`\n${chalk.bold('Phase 2: Add New Documents')}`);
@@ -342,7 +342,7 @@ async function example3() {
         'Skipped': duplicateDocs.length
     });
 
-    console.log(`\n${chalk.bold('💡 Key Insight:')}`);
+    console.log(`\n${chalk.bold('Key Insight:')}`);
     console.log('Incremental updates only embed new documents.');
     console.log('This saves time and compute resources!\n');
 }
@@ -366,7 +366,7 @@ async function example4() {
     console.log(`\n${chalk.bold('Saving in different formats:')}`);
 
     const jsonResult = await saveEmbeddingsJSON(embeddings, 'comparison.json');
-    console.log(`${chalk.green('✓')} JSON: ${(jsonResult.size / 1024 / 1024).toFixed(2)} MB`);
+    console.log(`${chalk.green('OK')} JSON: ${(jsonResult.size / 1024 / 1024).toFixed(2)} MB`);
 
     // Compare load times
     console.log(`\n${chalk.bold('Load Time Comparison:')}`);
@@ -444,7 +444,7 @@ async function example5() {
     console.log('• Chroma: Convert to their Document format');
     console.log('• Milvus: Map to their schema\n');
 
-    console.log(chalk.bold('💡 Next Steps:'));
+    console.log(chalk.bold('Next Steps:'));
     console.log('1. Choose a vector store (05_building_vector_store)');
     console.log('2. Import these embeddings');
     console.log('3. Add similarity search capabilities');
@@ -475,7 +475,7 @@ async function example6() {
             'Downloading PDF...',
             () => loader.load()
         );
-        console.log(`${chalk.green('✓')} Loaded ${docs.length} pages\n`);
+        console.log(`${chalk.green('OK')} Loaded ${docs.length} pages\n`);
 
         console.log(`${chalk.bold('Step 2:')} Split into chunks`);
         const splitter = new RecursiveCharacterTextSplitter({
@@ -483,7 +483,7 @@ async function example6() {
             chunkOverlap: 50
         });
         const chunks = await splitter.splitDocuments(docs);
-        console.log(`${chalk.green('✓')} Created ${chunks.length} chunks\n`);
+        console.log(`${chalk.green('OK')} Created ${chunks.length} chunks\n`);
 
         console.log(`${chalk.bold('Step 3:')} Generate embeddings`);
         const embeddings = await generateEmbeddings(
@@ -493,11 +493,11 @@ async function example6() {
                 process.stdout.write(`\rProgress: ${current}/${total}`);
             }
         );
-        console.log(`\n${chalk.green('✓')} Generated ${embeddings.length} embeddings\n`);
+        console.log(`\n${chalk.green('OK')} Generated ${embeddings.length} embeddings\n`);
 
         console.log(`${chalk.bold('Step 4:')} Save to disk`);
         const result = await saveEmbeddingsJSON(embeddings, 'pdf_embeddings.json');
-        console.log(`${chalk.green('✓')} Saved to ${path.basename(result.filepath)}`);
+        console.log(`${chalk.green('OK')} Saved to ${path.basename(result.filepath)}`);
         console.log(`${chalk.dim('  Size:')} ${(result.size / 1024).toFixed(2)} KB\n`);
 
         console.log(chalk.bold.green('Complete pipeline executed successfully!'));
@@ -539,7 +539,7 @@ async function runAllExamples() {
         await OutputHelper.runExample('Example 5: Preparing for Vector Stores', example5);
         await OutputHelper.runExample('Example 6: Real-World PDF Processing', example6);
 
-        console.log(chalk.bold.green('\n✅ All examples completed successfully!\n'));
+        console.log(chalk.bold.green('\nAll examples completed successfully!\n'));
         console.log(chalk.bold('Key Takeaways:'));
         console.log('• Generate embeddings in batches for efficiency');
         console.log('• Always save embeddings to avoid re-computation');
@@ -553,7 +553,7 @@ async function runAllExamples() {
         console.log('• Build complete RAG pipeline\n');
 
     } catch (error) {
-        console.error(chalk.red('\n❌ Error:'), error.message);
+        console.error(chalk.red('\nError:'), error.message);
         console.error(chalk.dim('\nMake sure you have:'));
         console.error(chalk.dim('1. Completed previous examples'));
         console.error(chalk.dim('2. Downloaded the embedding model'));

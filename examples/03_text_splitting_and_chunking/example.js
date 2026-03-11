@@ -129,7 +129,7 @@ class CharacterTextSplitter extends TextSplitter {
 
 /**
  * Recursive character-based text splitter.
- * Tries larger separators first, then falls back to smaller ones (paragraph → sentence → word).
+ * Tries larger separators first, then falls back to smaller ones (paragraph -> sentence -> word).
  */
 class RecursiveCharacterTextSplitter extends TextSplitter {
     constructor({

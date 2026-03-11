@@ -260,7 +260,7 @@ async function example1(embeddingContext) {
     console.log(chalk.dim('• Vector search might include similar products (Bose)'));
     console.log(chalk.dim('• Hybrid gives precise brand + semantic category\n'));
 
-    console.log(`${chalk.bold("💡 Key Insight:")}`);
+    console.log(`${chalk.bold("Key Insight:")}`);
     console.log("For e-commerce, keyword search is essential for:");
     console.log("• Product codes (SKUs, model numbers)");
     console.log("• Brand names (proper nouns)");
@@ -349,7 +349,7 @@ async function example2(embeddingContext) {
     console.log(`Vector:  [${chalk.yellow(vecNorm3[0].toFixed(3))} ... ${vecNorm3[vecNorm3.length-1].toFixed(3)}]`);
     console.log(`Keyword: [${chalk.green(keyNorm3[0].toFixed(3))} ... ${keyNorm3[keyNorm3.length-1].toFixed(3)}]`);
 
-    console.log(`\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n${chalk.bold("Key Insight:")}`);
     console.log("Normalization Comparison:");
     console.log("• Min-Max: Simple, but sensitive to outliers");
     console.log("• Z-Score: Preserves distribution, good for statistical analysis");
@@ -411,13 +411,13 @@ async function example3(embeddingContext) {
         console.log(`     ${chalk.dim(doc.metadata.attributes)}`);
     });
 
-    console.log(`\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n${chalk.bold("Key Insight:")}`);
     console.log("Multi-field indexing allows:");
     console.log("• Brand matching in brand field (exact match)");
     console.log("• Spec matching in attributes field (technical terms)");
     console.log("• Description matching in content field (semantic)");
     console.log("• SKU matching in sku field (product codes)");
-    console.log("→ Comprehensive search across all product dimensions\n");
+    console.log("Comprehensive search across all product dimensions\n");
 }
 
 /**
@@ -495,14 +495,14 @@ async function example4(embeddingContext) {
         console.log();
     }
 
-    console.log(`${chalk.bold("💡 Key Insight:")}`);
+    console.log(`${chalk.bold("Key Insight:")}`);
     console.log("Query patterns guide weight selection:");
-    console.log("• Product codes → Keyword-heavy (0.2/0.8)");
-    console.log("• Technical specs → Keyword-heavy (0.3/0.7)");
-    console.log("• Questions → Vector-heavy (0.8/0.2)");
-    console.log("• Short keywords → Keyword-leaning (0.4/0.6)");
-    console.log("• Mixed/default → Balanced (0.5/0.5)");
-    console.log("→ Automated strategy improves UX!\n");
+    console.log("• Product codes - Keyword-heavy (0.2/0.8)");
+    console.log("• Technical specs - Keyword-heavy (0.3/0.7)");
+    console.log("• Questions - Vector-heavy (0.8/0.2)");
+    console.log("• Short keywords - Keyword-leaning (0.4/0.6)");
+    console.log("• Mixed/default - Balanced (0.5/0.5)");
+    console.log("Automated strategy improves UX!\n");
 }
 
 /**
@@ -562,7 +562,7 @@ async function example5(embeddingContext) {
         console.log(`  ${idx + 1}. [${chalk.cyan(doc.combinedScore.toFixed(4))}] ${doc.metadata.title}`);
     });
 
-    console.log(`\n${chalk.bold("💡 Fallback Strategy:")}`);
+    console.log(`\n${chalk.bold("Fallback Strategy:")}`);
     console.log("When keyword search fails:");
     console.log("1. Start with balanced hybrid (0.5/0.5)");
     console.log("2. If few results, shift to vector-heavy (0.8/0.2)");
@@ -601,7 +601,7 @@ async function example6(embeddingContext) {
     unfiltered.forEach((doc, idx) => {
         const overBudget = doc.metadata.price > maxPrice;
         console.log(`  ${idx + 1}. [${chalk.cyan(doc.combinedScore.toFixed(4))}] ${doc.metadata.title}`);
-        console.log(`     $${doc.metadata.price} ${overBudget ? chalk.red("(over budget)") : chalk.green("✓")}`);
+        console.log(`     $${doc.metadata.price} ${overBudget ? chalk.red("(over budget)") : chalk.green("OK")}`);
     });
 
     // With price filter
@@ -618,7 +618,7 @@ async function example6(embeddingContext) {
 
     priceFiltered.forEach((doc, idx) => {
         console.log(`  ${idx + 1}. [${chalk.cyan(doc.combinedScore.toFixed(4))}] ${doc.metadata.title}`);
-        console.log(`     $${doc.metadata.price} ${chalk.green("✓")}`);
+        console.log(`     $${doc.metadata.price} ${chalk.green("OK")}`);
     });
 
     // Category + Price filter
@@ -632,13 +632,13 @@ async function example6(embeddingContext) {
         console.log(`     $${doc.metadata.price} | ${doc.metadata.category}`);
     });
 
-    console.log(`\n${chalk.bold("💡 Key Insight:")}`);
+    console.log(`\n${chalk.bold("Key Insight:")}`);
     console.log("Combine hybrid search with business filters:");
     console.log("• Price ranges (budgets)");
     console.log("• Category constraints");
     console.log("• In-stock status");
     console.log("• User permissions/visibility");
-    console.log("→ Search score + business rules = better UX\n");
+    console.log("Search score + business rules = better UX\n");
 }
 
 /**
@@ -721,13 +721,13 @@ async function example7(embeddingContext) {
     console.log("   • Set TTL based on update frequency");
     console.log("   • Invalidate on product updates\n");
 
-    console.log(`${chalk.bold("💡 Production Checklist:")}`);
-    console.log("✓ Implement query result caching");
-    console.log("✓ Use two-stage retrieval for large catalogs");
-    console.log("✓ Partition indices by category/domain");
-    console.log("✓ Monitor slow queries and optimize");
-    console.log("✓ Pre-compute embeddings for products");
-    console.log("✓ Consider approximate nearest neighbor search\n");
+    console.log(`${chalk.bold("Production Checklist:")}`);
+    console.log("- Implement query result caching");
+    console.log("- Use two-stage retrieval for large catalogs");
+    console.log("- Partition indices by category/domain");
+    console.log("- Monitor slow queries and optimize");
+    console.log("- Pre-compute embeddings for products");
+    console.log("- Consider approximate nearest neighbor search\n");
 }
 
 // ============================================================================
@@ -761,7 +761,7 @@ async function runAllExamples() {
         await OutputHelper.runExample("Example 6: Filter-Aware Search", () => example6(embeddingContext));
         await OutputHelper.runExample("Example 7: Performance Optimization", () => example7(embeddingContext));
 
-        console.log(chalk.bold.green("\n✅ All examples completed successfully!\n"));
+        console.log(chalk.bold.green("\nAll examples completed successfully!\n"));
 
         console.log(chalk.bold("Key Takeaways:"));
         console.log("• Hybrid search is critical for e-commerce product search");
@@ -784,16 +784,16 @@ async function runAllExamples() {
         console.log("└────────────────────────────┴─────────────────┘\n");
 
         console.log(chalk.bold("Production Recommendations:"));
-        console.log("✓ Use multi-field indexing (title, brand, SKU, attributes)");
-        console.log("✓ Implement query pattern detection for auto-weighting");
-        console.log("✓ Add fallback to vector search for zero results");
-        console.log("✓ Combine search with business filters (price, stock)");
-        console.log("✓ Cache popular queries with appropriate TTL");
-        console.log("✓ Monitor and optimize slow query patterns");
-        console.log("✓ Consider two-stage retrieval for large catalogs\n");
+        console.log("- Use multi-field indexing (title, brand, SKU, attributes)");
+        console.log("- Implement query pattern detection for auto-weighting");
+        console.log("- Add fallback to vector search for zero results");
+        console.log("- Combine search with business filters (price, stock)");
+        console.log("- Cache popular queries with appropriate TTL");
+        console.log("- Monitor and optimize slow query patterns");
+        console.log("- Consider two-stage retrieval for large catalogs\n");
 
     } catch (error) {
-        console.error(chalk.red("\n❌ Error:"), error?.message ?? error);
+        console.error(chalk.red("\nError:"), error?.message ?? error);
         console.error(chalk.dim("\nMake sure you have:"));
         console.error(chalk.dim("1. Installed: npm install embedded-vector-db node-llama-cpp chalk"));
         console.error(chalk.dim("2. Model file: bge-small-en-v1.5.Q8_0.gguf in models/"));

@@ -40,10 +40,10 @@ export class OutputHelper {
 
     // === SECTION: Logging ===
     static log = {
-        success: msg => console.log(chalk.green('✓ ') + msg),
+        success: msg => console.log(chalk.green('[OK] ') + msg),
         info: msg => console.log(chalk.blue('ℹ ') + msg),
-        warn: msg => console.log(chalk.yellow('⚠ ') + msg),
-        error: msg => console.log(chalk.red('✗ ') + msg)
+        warn: msg => console.log(chalk.yellow('[WARN] ') + msg),
+        error: msg => console.log(chalk.red('[ERR] ') + msg)
     };
 
     // === SECTION: Async Utilities ===
@@ -77,9 +77,9 @@ export class OutputHelper {
         const t0 = Date.now();
         try {
             await fn();
-            console.log(chalk.green(`\n✓ Completed in ${(Date.now() - t0) / 1000}s\n`));
+            console.log(chalk.green(`\nCompleted in ${(Date.now() - t0) / 1000}s\n`));
         } catch (e) {
-            console.error(chalk.red(`✗ Failed: ${e.message}`));
+            console.error(chalk.red(`Failed: ${e.message}`));
         }
     }
 }
